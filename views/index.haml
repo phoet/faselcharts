@@ -17,12 +17,17 @@
 
   %body
     %header
-      %h1= title
+      %h1.afs-yanone-kaffeesatz= title
     %section
       %h2 Faselzitat des Tages
-      %p
+      %p#cite
         %cite= "“#{@cites.shuffle.first}”"
-    %footer    
+        %a#reload{href: '#', title: 'Press the "r" key to reload!'} &#x21A9;
+      #backup.hidden
+        %ul
+          - @cites.each do |cite|
+            %li= "“#{cite}”"
+    %footer
       %p &copy;&reg; <a href="http://twitter.com/jedbeard">@jedbeard</a>
     :javascript
       var _gaq = _gaq || [];

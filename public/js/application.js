@@ -1,13 +1,24 @@
-var showStuff = function (){
-  var lis = $('#tweets li');
-  lis.filter(':visible').first().hide().attr('title', '');
-  var invisibles = lis.filter('[title*="unused"]').filter(':hidden');
-  invisibles.first().fadeIn();
-  if(invisibles.size() <= 1) {
-    lis.attr('title', 'unused');
+var shuffleCite = function (event){
+  if(event) {
+    event.preventDefault();
+  }
+  $('#cite').fadeToggle(function (){
+    $('cite').html($('#backup li').sort(randomSort).first().html());
+  });
+  $('#cite').fadeToggle();
+}
+
+var randomSort = function (thing){
+  return 0.5 - Math.random();
+}
+
+var keyReload = function (event){
+  if(event.keyCode == 82) { // press r
+    shuffleCite();
   }
 }
 
 $(document).ready(function(){
-  setInterval(showStuff, 3000);
+  $('#reload').click(shuffleCite);
+  document.onkeyup = keyReload;
 });
