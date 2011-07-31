@@ -6,8 +6,9 @@ require 'bundler'
 Bundler.require
 
 configure :development do
+  puts "starting in development mode"
   Sinatra::Application.reset!
-  use Rack::Reloader
+  require "sinatra/reloader"
 end
 
 require 'application'

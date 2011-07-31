@@ -10,34 +10,42 @@ body {
   font-family: "Georgia1", "Georgia", serif;
 }
 
-h1, h2, p {
+h1, h2, h3, p {
   text-align:center;
   margin-top:1em;
 }
 
-h1 {
+h1, h2, h3 {
   font-family: "Yanone Kaffeesatz", "Helvetica", "Arial", "Lucida Grande", "Gill Sans", "Verdana", sans-serif;
   font-size:8em;
 }
 h2 {
-  font-family: "Yanone Kaffeesatz", "Helvetica", "Arial", "Lucida Grande", "Gill Sans", "Verdana", sans-serif;
   font-size:4em;
 }
+h3 {
+  font-size:2em;
+}
+
 p {
   margin-top:2em;
   font-size:2em;
 }
 
 footer {
-  margin-top:4em;
+  margin-top:6em;
+  margin-bottom:4em;
 }
 
 footer p {
   font-size:1em;
 }
 
-li {
-  list-style:none;
+a, a:hover, a:active, a:visited {
+  color:#0066FF;
+}
+
+input {
+  color:gray;
 }
 
 .hidden {
@@ -48,8 +56,36 @@ li {
   font-size:smaller;
 }
 
-a, a:hover, a:active, a:visited {
-  color:#0066FF;
+.jedbeard {
+  background:url(/img/jedbeard.png) right top no-repeat;
+  padding-right:54px;
+}
+
+#searchwrapper {
+  width:580px;
+  height:70px;
+  background-image:url(/img/searchbox.png);
+  background-repeat:no-repeat; /*important*/
+  padding:0px;
+  margin:0 auto;
+  margin-top:2em;
+  position:relative; /*important*/
+}
+ 
+#searchwrapper form { 
+  display:inline;
+}
+ 
+.searchbox {
+  border:0px; /*important*/
+  background-color:transparent; /*important*/
+  position:absolute; /*important*/
+  top:2px;
+  left:14px;
+  width:552px;
+  height:64px;
+  font-size:2em;
+  text-align:center;
 }
 
 @font-face {

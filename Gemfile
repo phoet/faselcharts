@@ -8,5 +8,6 @@ gem "rest-client"
 gem "json"
 
 group :development do
+  gem "sinatra-reloader"
   gem "heroku"
 end

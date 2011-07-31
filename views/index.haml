@@ -18,17 +18,40 @@
   %body
     %header
       %h1.afs-yanone-kaffeesatz= title
+
     %section
       %h2 Faselzitat des Tages
       %p#cite
-        %cite= "“#{@cites.shuffle.first}”"
+        %cite= "“#{@random_cite}”"
         %a#reload{href: '#', title: 'Press the "r" key to reload!'} &#x21A9;
       #backup.hidden
         %ul
           - @cites.each do |cite|
             %li= "“#{cite}”"
+
+    %section#search
+      %h2 Faselsuche
+      %div#searchwrapper
+        %form{action: "/#search", type: "get"}
+          %input.searchbox{type: "text", name: "s", placeholder: "#{@random_cite[0..20]}...", value: @search_term}
+      -if @search_term
+        %p= "Deine Suche nach “#{@search_term}” ergab:"
+        -if @search_results and not @search_results.empty?
+          %ul
+            - @search_results.each do |result|
+              %li
+                %p= "“#{result}”"
+        -else
+          %p Keine Treffer gefunden für:
+          %p= "“#{@search_term}”"
+          %p
+            %a{href: "/?add=true"} Jetzt hinzufügen!
+
     %footer
-      %p &copy;&reg; <a href="http://twitter.com/jedbeard">@jedbeard</a>
+      %h3
+        Brought to you by:
+        %a.jedbeard{href: "http://twitter.com/jedbeard"} @jedbeard
+
     :javascript
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-2711231-9']);

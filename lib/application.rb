@@ -7,6 +7,8 @@
 #   haml :doc_id
 # end
 
+enable :sessions
+
 get '/' do
   @cites = [
     'Tu dir nicht weh!',
@@ -28,6 +30,15 @@ get '/' do
     'Sowas von 80er...',
     'Lösen durch Anstarren.'
     ]
+  @random_cite = @cites.shuffle.first
+  if params['s']
+    @search_term = session[:term] = params['s']
+    @search_results = @cites.grep(/#{@search_term}/i)
+  end
+  if params['add']
+    @cites << session[:term]
+    @random_cite = session[:term]
+  end
   haml :index
 end
 
