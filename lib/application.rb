@@ -26,7 +26,7 @@ get '/' do
     'Ja ja ja ja, nee.',
     'Ein Glück, dass Bewegungslegasthenie nicht vererbbar ist.',
     'Piss off, I tell you something!',
-    'War Daniel eigentlich beim Frisör.',
+    'War Daniel eigentlich beim Frisör?',
     'Sowas von 80er...',
     'Lösen durch Anstarren.'
     ]
@@ -35,9 +35,10 @@ get '/' do
     @search_term = session[:term] = params['s']
     @search_results = @cites.grep(/#{@search_term}/i)
   end
-  if params['add']
+  if params['add'] && session[:term]
     @cites << session[:term]
     @random_cite = session[:term]
+    session[:term] = nil
   end
   haml :index
 end
