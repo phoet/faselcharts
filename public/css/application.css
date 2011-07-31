@@ -81,6 +81,7 @@ input {
 }
  
 .searchbox {
+  -webkit-appearance:none;
   border:0px !important; /*important*/
   background-color:transparent; /*important*/
   position:absolute; /*important*/
