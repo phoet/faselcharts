@@ -1,0 +1,36 @@
+/* import stylesheets and hide from IE/Mac \*/
+@import url("/css/reset.css") screen; /* Reset browsers */
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 1em;
+  font-size: 10em;
+}
+
+#tweets {
+  text-align:center;
+  margin-top:2em;
+  font-size:3em;
+}
+
+li {
+  list-style:none;
+}
+
+.hidden {
+  display:none;
+}
+
+.small {
+  font-size:smaller;
+}
+
+a, a:hover, a:active, a:visited {
+  color:black;
+}
