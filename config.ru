@@ -5,10 +5,11 @@ require 'bundler'
 
 Bundler.require
 
-configure :development do
+configure :development do |c|
   puts "starting in development mode"
   Sinatra::Application.reset!
   require "sinatra/reloader"
+  c.also_reload "lib/**/*.rb"
 end
 
 require 'redis_store'

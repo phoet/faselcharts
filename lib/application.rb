@@ -1,5 +1,4 @@
 # encoding: UTF-8
-enable :sessions
 
 STORE = RedisStore.new
 
@@ -22,12 +21,6 @@ end
 get '/' do
   @cites = STORE.list
   @random_cite = @cites.shuffle.first
-  if @search_term = session[:term] = params['s']
-    @search_results = @cites.select{|cite| cite.value =~ /#{@search_term}/i }
-  end
-  if params['add']
-    @random_cite = STORE.add(session[:term])
-  end
   haml :index
 end
 
