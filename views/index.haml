@@ -18,7 +18,7 @@
   %body
 
     %section
-      %h2 Faselzitat des Tages:
+      %h2 Improgefasel:
       %p#cite
         %cite= cite(@random_cite)
         %a#reload{href: '#', title: 'Press the "r" key to reload!'} &#x21A9;
@@ -28,7 +28,7 @@
             %li= cite(cite)
 
     %section
-      %h2 Top-3-Fasel-Charts:
+      %h2 Faselcharts:
       %ul
         - @cites[0..2].each do |cite|
           %li
@@ -47,7 +47,6 @@
         %a.showAll{href: '#'} Alle anzeigen
 
     %footer
-      %h2= title
       %h3
         Brought to you by:
         %a.jedbeard{href: "http://twitter.com/jedbeard"} @jedbeard

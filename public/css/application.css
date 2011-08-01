@@ -17,7 +17,7 @@ h1, h2, h3, p {
 
 h1, h2, h3 {
   font-family: "Yanone Kaffeesatz", "Helvetica", "Arial", "Lucida Grande", "Gill Sans", "Verdana", sans-serif;
-  font-size:8em;
+  font-size:6em;
 }
 h2 {
   font-size:4em;
@@ -29,6 +29,10 @@ h3 {
 p {
   margin-top:2em;
   font-size:2em;
+}
+
+section {
+  padding-top:4em;
 }
 
 footer {
@@ -77,7 +81,8 @@ input {
 }
  
 .searchbox {
-  border:0px; /*important*/
+  -webkit-appearance:none;
+  border:0px !important; /*important*/
   background-color:transparent; /*important*/
   position:absolute; /*important*/
   top:2px;
