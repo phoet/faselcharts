@@ -16,40 +16,38 @@
     %script{src: "/js/application.js?#{Time.now.to_i}", type: "text/javascript"}
 
   %body
-
-    %section
-      %h2 Improgefasel:
-      %p#cite
-        %cite= cite(@random_cite)
-        %a#reload{href: '#', title: 'Press the "r" key to reload!'} &#x21A9;
-      #backup.hidden
-        %ul
-          - @cites.each do |cite|
-            %li= cite(cite)
-
     %section
       %h2 Faselcharts:
       %ul
         - @cites[0..2].each do |cite|
           %li
-            %p= cite(cite)
+            %p= link_to_vote(cite, :faselcharts)
+
+    %section
+      %h2 Faselzufall:
+      %p#cite= link_to_reload(@random_cite)
+      #backup.hidden
+        %ul
+          - @cites.each do |cite|
+            %li= cite(cite)
 
     %section#search
       %h2 Faselsuche:
       %div#searchwrapper
         %form
-          %input.searchbox{type: "text", name: "s", placeholder: "Mach mal nen...", value: @search_term}
+          %input.searchbox{type: "text", name: "s", placeholder: "Mach mal nen Satz dr...", value: @search_term}
+      %p
+        %a.showAll{href: '#'} Alle anzeigen
       %ul
         - @cites.each do |cite|
           %li.hidden
-            %p= cite(cite)
-      %p
-        %a.showAll{href: '#'} Alle anzeigen
+            %p= link_to_vote(cite, :faselsearch)
 
     %footer
       %h3
         Brought to you by:
         %a.jedbeard{href: "http://twitter.com/jedbeard"} @jedbeard
+
 
     :javascript
       var _gaq = _gaq || [];

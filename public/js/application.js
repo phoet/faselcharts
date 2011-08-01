@@ -1,3 +1,5 @@
+var slow = 1000;
+
 var shuffleCite = function (event){
   if(event) {
     event.preventDefault();
@@ -12,9 +14,16 @@ var randomSort = function (thing){
   return 0.5 - Math.random();
 }
 
-var keyReload = function (event){
+var keys = function (event){
+  if(event.target.nodeName.toLowerCase() == 'input') {
+    return;
+  }
   if(event.keyCode == 82) { // press r
     shuffleCite();
+  } else if(event.keyCode == 72) { // press h
+    firstTooltip();
+  } else if(event.keyCode == 65) { // press a
+    $('a.showAll').click();
   }
 }
 
@@ -31,22 +40,45 @@ var search = function (){
 var vote = function (event){
   event.preventDefault();
   var self = $(this);
-  $.get($(this).attr('href'), function(data) {
-    console.log(data)
-    self.html("(" + data + ")");
-  });
+  if(self.attr('href')) {
+    $.get(self.attr('href'), function(data) {
+      self.html("(" + data + ")");
+    });
+    self.removeAttr('href');
+  }
 }
 
 var showAll = function (event){
   event.preventDefault();
-  $('#search li').fadeIn();
+  if($(this).html() == 'Alle anzeigen') {
+    $('a.showAll').html('Alle ausblenden');
+    $('#search li').fadeIn();
+  } else {
+    $('a.showAll').html('Alle anzeigen');
+    $('#search li').fadeOut();
+  }
+}
+
+var firstTooltip = function (){
+  $('.tooltip').filter(':hidden').fadeIn(slow).fadeOut(slow, function (){
+    $(this).hide();
+  });
+}
+
+var tooltipIn = function (){
+  var name = $(this).attr('name');
+  $('#' + name).filter(':hidden').fadeIn(slow).fadeOut();;
 }
 
 $(document).ready(function(){
+  document.onkeyup = keys;
+  
   $('#reload').click(shuffleCite);
   $('a.vote').click(vote);
   $('a.showAll').click(showAll);
+  $('a[name]').mouseover(tooltipIn);
   $('#search input').keyup(search);
   $('#search form').submit(function(event){event.preventDefault();});
-  document.onkeyup = keyReload;
+
+  firstTooltip();
 });

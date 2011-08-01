@@ -60,6 +60,18 @@ input {
   font-size:smaller;
 }
 
+.tooltip {
+  position:absolute;
+  z-index:-1;
+}
+.tooltip abbr{
+  position:relative;
+  left:-410px;
+  text-align:right;
+  width:400px;
+  display:block;
+}
+
 .jedbeard {
   background:url(/img/jedbeard.png) right top no-repeat;
   padding-right:54px;
