@@ -16,38 +16,38 @@
     %script{src: "/js/application.js?#{Time.now.to_i}", type: "text/javascript"}
 
   %body
-    %header
-      %h1.afs-yanone-kaffeesatz= title
 
     %section
-      %h2 Faselzitat des Tages
+      %h2 Faselzitat des Tages:
       %p#cite
-        %cite= "“#{@random_cite}”"
+        %cite= cite(@random_cite)
         %a#reload{href: '#', title: 'Press the "r" key to reload!'} &#x21A9;
       #backup.hidden
         %ul
           - @cites.each do |cite|
-            %li= "“#{cite}”"
+            %li= cite(cite)
+
+    %section
+      %h2 Top-3-Fasel-Charts:
+      %ul
+        - @cites[0..2].each do |cite|
+          %li
+            %p= cite(cite)
 
     %section#search
-      %h2 Faselsuche
+      %h2 Faselsuche:
       %div#searchwrapper
-        %form{action: "/#search", type: "get"}
-          %input.searchbox{type: "text", name: "s", placeholder: "#{@random_cite[0..20]}...", value: @search_term}
-      -if @search_term
-        %p= "Deine Suche nach “#{@search_term}” ergab:"
-        -if @search_results and not @search_results.empty?
-          %ul
-            - @search_results.each do |result|
-              %li
-                %p= "“#{result}”"
-        -else
-          %p Keine Treffer gefunden für:
-          %p= "“#{@search_term}”"
-          %p
-            %a{href: "/?add=true"} Jetzt hinzufügen!
+        %form
+          %input.searchbox{type: "text", name: "s", placeholder: "Mach mal nen...", value: @search_term}
+      %ul
+        - @cites.each do |cite|
+          %li.hidden
+            %p= cite(cite)
+      %p
+        %a.showAll{href: '#'} Alle anzeigen
 
     %footer
+      %h2= title
       %h3
         Brought to you by:
         %a.jedbeard{href: "http://twitter.com/jedbeard"} @jedbeard

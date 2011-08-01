@@ -4,8 +4,8 @@ source "http://rubygems.org"
 gem "sinatra"
 gem "haml"
 gem "foreman"
-gem "rest-client"
-gem "json"
+gem "redis"
+gem "twitter"
 
 group :development do
   gem "sinatra-reloader"

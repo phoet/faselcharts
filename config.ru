@@ -11,5 +11,6 @@ configure :development do
   require "sinatra/reloader"
 end
 
+require 'redis_store'
 require 'application'
 run Sinatra::Application

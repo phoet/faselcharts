@@ -18,7 +18,35 @@ var keyReload = function (event){
   }
 }
 
+var search = function (){
+  var s = $(this).attr('value');
+  if(s.length >= 2) {
+    $('#search li').hide();
+    $('#search li').filter(function() {
+      return new RegExp(s, 'i').test( $(this).text() );
+    }).fadeIn();
+  }
+}
+
+var vote = function (event){
+  event.preventDefault();
+  var self = $(this);
+  $.get($(this).attr('href'), function(data) {
+    console.log(data)
+    self.html("(" + data + ")");
+  });
+}
+
+var showAll = function (event){
+  event.preventDefault();
+  $('#search li').fadeIn();
+}
+
 $(document).ready(function(){
   $('#reload').click(shuffleCite);
+  $('a.vote').click(vote);
+  $('a.showAll').click(showAll);
+  $('#search input').keyup(search);
+  $('#search form').submit(function(event){event.preventDefault();});
   document.onkeyup = keyReload;
 });
