@@ -22,8 +22,6 @@ var keys = function (event){
     shuffleCite();
   } else if(event.keyCode == 72) { // press h
     firstTooltip();
-  } else if(event.keyCode == 65) { // press a
-    $('a.showAll').click();
   }
 }
 

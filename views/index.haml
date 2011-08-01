@@ -36,12 +36,12 @@
       %div#searchwrapper
         %form
           %input.searchbox{type: "text", name: "s", placeholder: "Mach mal nen Satz dr...", value: @search_term}
-      %p
-        %a.showAll{href: '#'} Alle anzeigen
       %ul
         - @cites.each do |cite|
           %li.hidden
             %p= link_to_vote(cite, :faselsearch)
+      %p
+        %a.showAll{href: '#'} Alle anzeigen
 
     %footer
       %h3
