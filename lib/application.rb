@@ -14,7 +14,6 @@ get '/update' do
 end
 
 get '/vote' do
-  puts "voting #{params['vote']}"
   STORE.vote(params['vote'])
 end
 
