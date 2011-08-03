@@ -44,6 +44,10 @@ footer p {
   font-size:1em;
 }
 
+footer img {
+  border: 4px solid white;
+}
+
 a, a:hover, a:active, a:visited {
   color:#0066FF;
 }
