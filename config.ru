@@ -5,6 +5,7 @@ require 'bundler'
 
 Bundler.require
 
+puts "starting"
 configure :development do |c|
   puts "starting in development mode"
   Sinatra::Application.reset!
